@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WsWeb.Models.Medico>
+
+@{
+    ViewData["Title"] = "Listagem";
+}
+
+<h1>Listagem dos Médicos</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Médico</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeMedico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeMedico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidade)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

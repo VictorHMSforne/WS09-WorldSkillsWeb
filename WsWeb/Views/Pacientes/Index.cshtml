@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WsWeb.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Agendamento";
+}
+
+<h1>Listagem de Agedamento</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Paciente</a>
+</p>
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label for="nomeMedico" class="control-label"></label>
+        <select for="nomeMedico" id="nomeMedico" name="nomeMedico" class="form-control" asp-items="ViewBag.MedicoNome"></select>
+        <button class="btn btn-primary" type="submit">Localizar</button>
+        <a class="btn btn-secondary" href="@Url.Action("Index")">Limpar</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePaciente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.NomeMedico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomePaciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.NomeMedico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
